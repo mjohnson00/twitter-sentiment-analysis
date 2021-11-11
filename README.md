@@ -1,7 +1,6 @@
 paperClip - Social Media Sentiment Analysis Application 
 
-
-
+<img width="1014" alt="paperClip" src="https://user-images.githubusercontent.com/89555148/141241980-24702036-83ec-47b5-a508-c43f5bbbd48e.png">
 
 Languages:
 - Python 
