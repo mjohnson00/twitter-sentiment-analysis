@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en">
+</html>
+
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<style>
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+h1{
+ font-family: "Poppins", sans-serif;
+ font-size: 40px !important;
+ padding-bottom: 5px;
+}
+
+p4 {
+  margin-left: 575px;
+  color: #e14eca;
+  font-size: 22px !important; 
+  padding-bottom: 5px;
+}
+
+.scorecard  {
+            color: #e14eca;
+            font-size: 85px !important;
+            text-align: center;
+            padding-top: 15px;
+            
+          }
+
+#table-scroll {
+          height:150px;
+          overflow:auto;  
+          margin-top:20px;
+          color: white;
+          text-align: center;
+          font-size: 14px;
+          }
+
+
+th {
+  font-size: 16px !important;
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+   color: #e14eca;
+   border-radius: 20px;
+}
+
+
+</style>
+
+</head>
+
+ <body>
+
+  <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+    <div class="container-fluid">
+      <div class="navbar-wrapper">
+        <div class="navbar-toggle d-inline">
+        </div>
+        <a class="navbar-brand" href="javascript:void(0)">
+          <p>paperClip</p>
+          <hr class="break">
+        </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <h1> | paperClip
+  </h1>
+
+  <p4> Displaying results for {{ text }} </p4>
+
+
+  <div class="container col-12">
+    <div class="row g-4">
+      <div class="col-8">
+        <div class="p-3">3 Day Sentiment Score Analysis 
+          <hr class="break">
+          <div class="lineChart" id="lineChart">
+            <script>
+                var lineChart = {{line | safe}};
+                Plotly.plot('lineChart',lineChart,{});
+            </script>
+        </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="p-3">Overall Net Sentiment Score
+          <hr class="break">
+          <div class="scorecard">
+          {{ scorecard }} 
+        </div>
+      </div>
+    </div>
+
+      <div class="col-8">
+        <div class="p-3">Latest Tweet Feed
+          <hr class="break">
+          <div class="table table-borderless" id="table-scroll">
+        
+            {% for table in tables %}
+              {{ table|safe }}
+            {% endfor %}
+      
+          </div>
+
+        </div>
+      </div>
+      
+      <div class="col-4">
+        <div class="p-3">Tweets by Category: Positive v Negative
+          <hr class="break">
+          <div class="barChart" id="barChart">
+            <script>
+                var barPlot = {{bar | safe}};
+                Plotly.plot('barChart',barPlot,{});
+            </script>
+        </div>
+      </div>
+     </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+
+</body>
+</html>
